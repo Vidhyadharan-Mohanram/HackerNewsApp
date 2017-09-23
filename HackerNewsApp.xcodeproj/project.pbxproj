@@ -99,12 +99,10 @@
 		469FA1A61F7683B700E5B18E /* HackerNewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				469FA1D71F76856400E5B18E /* Storyboards */,
 				469FA1A71F7683B700E5B18E /* AppDelegate.swift */,
-				469FA1A91F7683B700E5B18E /* MasterViewController.swift */,
-				469FA1AB1F7683B700E5B18E /* DetailViewController.swift */,
-				469FA1AD1F7683B700E5B18E /* Main.storyboard */,
+				469FA1D81F76857D00E5B18E /* Controllers */,
 				469FA1B01F7683B700E5B18E /* Assets.xcassets */,
-				469FA1B21F7683B700E5B18E /* LaunchScreen.storyboard */,
 				469FA1B51F7683B700E5B18E /* Info.plist */,
 			);
 			path = HackerNewsApp;
@@ -126,6 +124,24 @@
 				469FA1CB1F7683B800E5B18E /* Info.plist */,
 			);
 			path = HackerNewsAppUITests;
+			sourceTree = "<group>";
+		};
+		469FA1D71F76856400E5B18E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				469FA1AD1F7683B700E5B18E /* Main.storyboard */,
+				469FA1B21F7683B700E5B18E /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		469FA1D81F76857D00E5B18E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				469FA1A91F7683B700E5B18E /* MasterViewController.swift */,
+				469FA1AB1F7683B700E5B18E /* DetailViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
