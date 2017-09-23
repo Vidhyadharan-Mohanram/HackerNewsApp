@@ -14,6 +14,7 @@ target 'HackerNewsApp' do
   pod 'RealmSwift'
   pod 'Hero', :git => 'https://github.com/lkzhao/Hero.git'
   pod 'GoogleSignIn'
+  pod 'Firebase/Auth'
 
   target 'HackerNewsAppTests' do
     inherit! :search_paths
