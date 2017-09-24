@@ -16,7 +16,6 @@
 		464DF8F71F77BF6D00197EF6 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F61F77BF6D00197EF6 /* DateExtension.swift */; };
 		465120A11F77CD7C00451632 /* CommentRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D760F41F77C1A600E13EC8 /* CommentRealm.swift */; };
 		465120A21F77CD7F00451632 /* StoryRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46009D581F77017700BDFEB6 /* StoryRealm.swift */; };
-		465120A61F7814CE00451632 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465120A51F7814CE00451632 /* Global.swift */; };
 		4688C5D31F76D7E700FED012 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4688C5D21F76D7D500FED012 /* GoogleSignIn.bundle */; };
 		4688C5D71F76D87000FED012 /* HackerNewsStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688C5D61F76D87000FED012 /* HackerNewsStories.swift */; };
 		469FA1A81F7683B700E5B18E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FA1A71F7683B700E5B18E /* AppDelegate.swift */; };
@@ -66,7 +65,6 @@
 		464DF8F21F77B78E00197EF6 /* HackerNewsStoryComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackerNewsStoryComments.swift; sourceTree = "<group>"; };
 		464DF8F41F77BAFB00197EF6 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		464DF8F61F77BF6D00197EF6 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		465120A51F7814CE00451632 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		4688C5D21F76D7D500FED012 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = Pods/GoogleSignIn/Resources/GoogleSignIn.bundle; sourceTree = "<group>"; };
 		4688C5D61F76D87000FED012 /* HackerNewsStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsStories.swift; sourceTree = "<group>"; };
 		469FA1A41F7683B700E5B18E /* HackerNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,7 +194,6 @@
 				469FA1E81F769C3A00E5B18E /* GoogleService-Info.plist */,
 				46009D601F7765CB00BDFEB6 /* UITableView Cells */,
 				464DF8F81F77BF7100197EF6 /* Generic Extensions */,
-				465120A51F7814CE00451632 /* Global.swift */,
 			);
 			path = HackerNewsApp;
 			sourceTree = "<group>";
@@ -621,7 +618,6 @@
 				465120A21F77CD7F00451632 /* StoryRealm.swift in Sources */,
 				46009D5D1F77019E00BDFEB6 /* StoryStruct.swift in Sources */,
 				464DF8F51F77BAFB00197EF6 /* CommentsTableViewCell.swift in Sources */,
-				465120A61F7814CE00451632 /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
