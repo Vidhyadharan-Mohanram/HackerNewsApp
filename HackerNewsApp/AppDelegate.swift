@@ -10,6 +10,7 @@ import UIKit
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
 
+        print("Realm URL: \(String(describing: Realm.Configuration.defaultConfiguration.fileURL))")
+
+        manageRealmMigration()
         return true
     }
 
@@ -60,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         // ...
-        if let error = error {
+        if let _ = error {
             // ...
             return
         }
@@ -69,7 +73,7 @@ extension AppDelegate: GIDSignInDelegate {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
+            if let _ = error {
                 // ...
                 return
             }
@@ -83,5 +87,15 @@ extension AppDelegate: GIDSignInDelegate {
         // Perform any operations when the user disconnects from app here.
         // ...
     }
+}
+
+extension AppDelegate {
+    
+    fileprivate func manageRealmMigration() {
+        var config = Realm.Configuration()
+        config.deleteRealmIfMigrationNeeded = true
+        Realm.Configuration.defaultConfiguration = config
+    }
+
 }
 

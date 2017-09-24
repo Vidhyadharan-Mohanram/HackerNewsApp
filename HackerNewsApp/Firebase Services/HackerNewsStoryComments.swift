@@ -8,9 +8,10 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 protocol FirebaseUpdaterCommentsDelegate: class {
-    func update(newComments: [CommentStruct]?)
+    func update(comments: [CommentStruct]?)
 }
 
 class HackerNewsStoryComments: NSObject {
@@ -21,49 +22,104 @@ class HackerNewsStoryComments: NSObject {
     private var retrievingComments: Bool! = false
     private let ItemChildRef = "item"
 
-    convenience init(commentIds: [Int], delegate: FirebaseUpdaterCommentsDelegate) {
+    convenience init(parentId: Int, delegate: FirebaseUpdaterCommentsDelegate) {
         self.init()
         self.delegate = delegate
-        self.retrieveComments(for: commentIds)
+        loadCachedComments(parentId: parentId)
     }
 
+    private func loadCachedComments(parentId: Int) {
+        let story = try! Realm().object(ofType: StoryRealm.self, forPrimaryKey: parentId)!
+        let validCachedComments = story.kids.filter { $0.text != nil }
+
+        DispatchQueue.main.async {
+            if validCachedComments.count > 0 {
+                let commentStructs = validCachedComments.map { CommentStruct($0.toDictionary())! }
+                self.comments = Array(commentStructs)
+                self.delegate?.update(comments: self.comments)
+            }
+
+            let commentIds = self.comments.map { $0.id! }
+
+            self.retrieveComments(for: commentIds)
+        }
+    }
+
+
     private func retrieveComments(for ids: [Int]) {
+        var newCommentsDataMap = [Int: [String: Any]]()
         var newCommentsMap = [Int:CommentStruct]()
         var commentsCount = 0
         for commentId in ids {
             let query = self.firebase.child(byAppendingPath: self.ItemChildRef).child(byAppendingPath: String(commentId))
             query?.observeSingleEvent(of: .value, with: { snapshot in
                 commentsCount += 1
-                if let commentStruct = self.extractComment(snapshot!) {
+                let data = snapshot!.value as! Dictionary<String, Any>
+                if let commentStruct = self.extractComment(data) {
+                    newCommentsDataMap[commentId] = data
                     newCommentsMap[commentId] = commentStruct
                 }
 
                 if ids.count == commentsCount {
+                    var sortedDataObjects = [[String: Any]]()
                     var sortedComments = [CommentStruct]()
+
                     for id in ids {
                         guard let comment = newCommentsMap[id] else { continue }
                         sortedComments.append(comment)
+                        sortedDataObjects.append(newCommentsDataMap[id]!)
                     }
+
+                    let filteredComments = sortedComments.filter({ (comment) -> Bool in
+                        return self.comments.filter { $0.id != comment.id }.last == nil
+                    })
 
                     self.comments = sortedComments
 
-                    self.delegate?.update(newComments: sortedComments)
                     self.retrievingComments = false
+
+                    DispatchQueue.main.async {
+                        self.delegate?.update(comments: filteredComments)
+                        self.writeToRealm(comments: sortedDataObjects)
+                    }
                 }
             }, withCancel: self.loadingFailed)
         }
     }
 
 
-    private func extractComment(_ snapshot: FDataSnapshot) -> CommentStruct? {
-        let data = snapshot.value as! Dictionary<String, Any>
-        let commentStruct = CommentStruct(fromDictionary: data)
+    private func extractComment(_ data: [String: Any]) -> CommentStruct? {
+        let commentStruct = CommentStruct(data)
 
         return commentStruct
     }
 
     func loadingFailed(_ error: Error?) -> Void {
-        self.delegate?.update(newComments: nil)
+        self.delegate?.update(comments: nil)
         print("loading error \(String(describing: error))")
+    }
+
+    func writeToRealm(comments: [[String: Any]]) {
+        guard comments.count > 0 else { return }
+
+        DispatchQueue.global(qos: .background).async {
+            autoreleasepool {
+                let realm = try! Realm()
+
+                try! realm.write {
+                    for comment in comments {
+                        guard let pKey = comment["id"] as? Int else { continue }
+
+                        if let storedComment = realm.object(ofType: CommentRealm.self, forPrimaryKey: pKey) {
+                            storedComment.update(fromDictionary: comment, realm: realm)
+                            realm.add(storedComment, update: true)
+                        } else {
+                            let newComment = CommentRealm.fromDictionary(dictionary: comment, realm: realm)
+                            realm.add(newComment)
+                        }
+                    }
+                }
+            }
+        }
     }
 }

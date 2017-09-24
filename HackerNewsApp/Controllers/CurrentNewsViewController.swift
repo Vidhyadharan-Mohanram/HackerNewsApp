@@ -36,7 +36,7 @@ class CurrentNewsViewController: BaseViewController {
     fileprivate var lastUpdatedTime: Date?
 
     private var updateTimer: Timer?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -110,7 +110,7 @@ extension CurrentNewsViewController: FirebaseUpdaterDelegate {
         lastUpdatedTime = Date()
 
         updateLastUpdatedLabel()
-        guard let items = newItems else { return }
+        guard let items = newItems, items.count > 0 else { return }
 
         self.stories.insert(contentsOf: items, at: 0)
 

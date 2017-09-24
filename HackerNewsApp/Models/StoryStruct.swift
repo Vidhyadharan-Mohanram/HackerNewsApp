@@ -23,7 +23,7 @@ struct StoryStruct{
 	/**
 	 * Instantiate the instance using the passed dictionary values to set the properties values
 	 */
-	init(fromDictionary dictionary: [String:Any]){
+	init(_ dictionary: [String:Any]){
 		by = dictionary["by"] as? String
 		descendants = dictionary["descendants"] as? Int
 		id = dictionary["id"] as? Int

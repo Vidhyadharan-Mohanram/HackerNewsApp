@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 protocol FirebaseUpdaterDelegate: class {
     func update(newItems: [StoryStruct]?)
@@ -38,14 +39,24 @@ class HackerNewsStories: NSObject {
     private var retrievingStories: Bool! = false
     private let ItemChildRef = "item"
 
-    private var queryLimit: UInt!
+    private var queryLimit: UInt = 100
     private var storyType: StoryType!
 
-    convenience init(storyType type: StoryType = .top, queryLimit: UInt = 30, delegate: FirebaseUpdaterDelegate) {
+    convenience init(storyType type: StoryType = .top, queryLimit: UInt = 100, delegate: FirebaseUpdaterDelegate) {
         self.init()
         self.storyType = type
         self.queryLimit = queryLimit
         self.delegate = delegate
+        self.loadCachedStories()
+    }
+
+    private func loadCachedStories() {
+        let cachedStories = try! Realm().objects(StoryRealm.self)
+        if cachedStories.count > 0 {
+            let storyStructs = cachedStories.map { StoryStruct($0.toDictionary()) }
+            self.stories = Array(storyStructs)
+            self.delegate?.update(newItems: self.stories)
+        }
         self.retrieveStories()
     }
 
@@ -76,45 +87,83 @@ class HackerNewsStories: NSObject {
     }
 
     private func retrieveItems(for ids: [Int]) {
+        var newStoriesDataMap = [Int: [String: Any]]()
         var newStoriesMap = [Int:StoryStruct]()
         var storiesCount = 0
         for storyId in ids {
             let query = self.firebase.child(byAppendingPath: self.ItemChildRef).child(byAppendingPath: String(storyId))
             query?.observeSingleEvent(of: .value, with: { snapshot in
                 storiesCount += 1
-                let itemStruct = self.extractStory(snapshot!)
+                let storyDictionary = snapshot!.value as! Dictionary<String, Any>
+                let itemStruct = self.extractStory(storyDictionary)
                 let currentTopStory = self.stories.first
+
                 if currentTopStory == nil || currentTopStory!.id != itemStruct.id {
-                    newStoriesMap[storyId] = self.extractStory(snapshot!)
+                    newStoriesDataMap[storyId] = storyDictionary
+                    newStoriesMap[storyId] = itemStruct
                 }
 
                 if storiesCount == ids.count {
+                    var sortedDataObjects = [[String: Any]]()
                     var sortedStories = [StoryStruct]()
+
                     for storyId in ids {
                         sortedStories.append(newStoriesMap[storyId]!)
+                        sortedDataObjects.append(newStoriesDataMap[storyId]!)
                     }
+
+                    let filteredStories = sortedStories.filter({ (story) -> Bool in
+                        return self.stories.filter { $0.id != story.id }.last == nil
+                    })
+
                     if self.stories.count == 0 {
                         self.stories = sortedStories
                     } else {
                         self.stories.insert(contentsOf: sortedStories, at: 0)
                     }
-                    self.delegate?.update(newItems: sortedStories)
                     self.retrievingStories = false
+
+                    DispatchQueue.main.async {
+                        self.delegate?.update(newItems: filteredStories)
+                        self.writeToRealm(newStories: sortedDataObjects)
+                    }
                 }
             }, withCancel: self.loadingFailed)
         }
     }
 
 
-    private func extractStory(_ snapshot: FDataSnapshot) -> StoryStruct {
-        let data = snapshot.value as! Dictionary<String, Any>
-        let itemStory = StoryStruct(fromDictionary: data)
-
+    private func extractStory(_ data: [String: Any]) -> StoryStruct {
+        let itemStory = StoryStruct(data)
         return itemStory
     }
 
     func loadingFailed(_ error: Error?) -> Void {
         self.delegate?.update(newItems: nil)
         print("loading error \(String(describing: error))")
+    }
+
+    func writeToRealm(newStories: [[String: Any]]) {
+        guard newStories.count > 0 else { return }
+
+        DispatchQueue.global(qos: .background).async {
+            autoreleasepool {
+                let realm = try! Realm()
+
+                try! realm.write {
+                    for story in newStories {
+                        guard let pKey = story["id"] as? Int else { continue }
+
+                        if let storedStory = realm.object(ofType: StoryRealm.self, forPrimaryKey: pKey) {
+                            storedStory.update(fromDictionary: story, realm: realm)
+                            realm.add(storedStory, update: true)
+                        } else {
+                            let newStory = StoryRealm.fromDictionary(dictionary: story, realm: realm)
+                            realm.add(newStory)
+                        }
+                    }
+                }
+            }
+        }
     }
 }

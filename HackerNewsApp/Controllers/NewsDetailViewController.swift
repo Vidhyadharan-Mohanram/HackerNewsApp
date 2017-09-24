@@ -59,7 +59,6 @@ class NewsDetailViewController: UIViewController {
     internal func updateUI() {
         guard let item = story, titleLabel != nil else { return }
 
-        hackerNewsStoryComments = HackerNewsStoryComments(commentIds: item.kids, delegate: self)
         titleLabel.text = item.title
 
         if let urlVal = item.url {
@@ -79,6 +78,10 @@ class NewsDetailViewController: UIViewController {
         }
 
         commentsButton.setTitle("\(item.descendants ?? 0) COMMENTS", for: .normal)
+
+        guard let comments = item.kids, comments.count > 0 else { return }
+        hackerNewsStoryComments = HackerNewsStoryComments(parentId: item.id,
+                                                          delegate: self)
     }
 
     @IBAction fileprivate func showComments(sender: UIButton) {
@@ -115,18 +118,18 @@ extension NewsDetailViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension NewsDetailViewController: FirebaseUpdaterCommentsDelegate {
-    func update(newComments: [CommentStruct]?) {
-        guard let items = newComments else { return }
+    func update(comments newComments: [CommentStruct]?) {
+        guard let items = newComments, items.count > 0 else { return }
 
-        self.comments.insert(contentsOf: items, at: 0)
-
-        commentsTableView.beginUpdates()
-        var indexPaths = [IndexPath]()
-        for i in 0 ..< items.count {
-            let indexPath = IndexPath(row: i, section: 0)
-            indexPaths.append(indexPath)
-        }
-        commentsTableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
-        commentsTableView.endUpdates()
+        comments.insert(contentsOf: items, at: 0)
+        commentsTableView.reloadData()
+//        commentsTableView.beginUpdates()
+//        var indexPaths = [IndexPath]()
+//        for i in 0 ..< items.count {
+//            let indexPath = IndexPath(row: i, section: 0)
+//            indexPaths.append(indexPath)
+//        }
+//        commentsTableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.none)
+//        commentsTableView.endUpdates()
     }
 }
