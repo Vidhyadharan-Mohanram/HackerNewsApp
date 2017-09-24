@@ -35,7 +35,7 @@ class HackerNewsStories: NSObject {
     private weak var delegate: FirebaseUpdaterDelegate?
 
     private var stories: [ItemStruct]! = []
-    internal var retrievingStories: Bool! = false
+    private var retrievingStories: Bool! = false
     private let ItemChildRef = "item"
 
     private var queryLimit: UInt!
@@ -48,7 +48,6 @@ class HackerNewsStories: NSObject {
         self.delegate = delegate
         self.retrieveStories()
     }
-
 
     internal func retrieveStories() {
         guard !retrievingStories else { return }

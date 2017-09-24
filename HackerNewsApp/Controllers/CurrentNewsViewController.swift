@@ -106,6 +106,7 @@ extension CurrentNewsViewController: UITableViewDataSource, UITableViewDelegate 
 
 extension CurrentNewsViewController: FirebaseUpdaterDelegate {
     func update(newStories: [ItemStruct]?) {
+        print("newStroies: \(String(describing: newStories))")
         refreshControl.endRefreshing()
         lastUpdatedTime = Date()
 

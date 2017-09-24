@@ -10,6 +10,7 @@
 		46009D561F76F86200BDFEB6 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46009D551F76F86200BDFEB6 /* FirebaseCore.framework */; };
 		46009D5D1F77019E00BDFEB6 /* ItemStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46009D5C1F77019E00BDFEB6 /* ItemStruct.swift */; };
 		46009D5F1F7765C600BDFEB6 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46009D5E1F7765C600BDFEB6 /* NewsTableViewCell.swift */; };
+		464DF8F11F779D6500197EF6 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F01F779D6500197EF6 /* NewsDetailViewController.swift */; };
 		4688C5D31F76D7E700FED012 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4688C5D21F76D7D500FED012 /* GoogleSignIn.bundle */; };
 		4688C5D71F76D87000FED012 /* HackerNewsStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688C5D61F76D87000FED012 /* HackerNewsStories.swift */; };
 		469FA1A81F7683B700E5B18E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FA1A71F7683B700E5B18E /* AppDelegate.swift */; };
@@ -53,6 +54,7 @@
 		46009D581F77017700BDFEB6 /* RealmItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmItem.swift; sourceTree = "<group>"; };
 		46009D5C1F77019E00BDFEB6 /* ItemStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStruct.swift; sourceTree = "<group>"; };
 		46009D5E1F7765C600BDFEB6 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		464DF8F01F779D6500197EF6 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		4688C5D21F76D7D500FED012 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = Pods/GoogleSignIn/Resources/GoogleSignIn.bundle; sourceTree = "<group>"; };
 		4688C5D61F76D87000FED012 /* HackerNewsStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsStories.swift; sourceTree = "<group>"; };
 		469FA1A41F7683B700E5B18E /* HackerNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +205,7 @@
 				469FA1DD1F7696FB00E5B18E /* LoginViewController.swift */,
 				469FA1DF1F76970C00E5B18E /* BaseViewController.swift */,
 				469FA1EA1F76AE5F00E5B18E /* CurrentNewsViewController.swift */,
+				464DF8F01F779D6500197EF6 /* NewsDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				469FA1E51F76976E00E5B18E /* HKNError.swift in Sources */,
 				4688C5D71F76D87000FED012 /* HackerNewsStories.swift in Sources */,
 				469FA1EB1F76AE5F00E5B18E /* CurrentNewsViewController.swift in Sources */,
+				464DF8F11F779D6500197EF6 /* NewsDetailViewController.swift in Sources */,
 				469FA1A81F7683B700E5B18E /* AppDelegate.swift in Sources */,
 				46009D5D1F77019E00BDFEB6 /* ItemStruct.swift in Sources */,
 			);

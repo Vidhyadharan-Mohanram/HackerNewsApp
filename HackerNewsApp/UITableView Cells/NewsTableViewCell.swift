@@ -38,7 +38,12 @@ class NewsTableViewCell: UITableViewCell {
         guard let item = itemStruct else { return }
         scoreLabel.text = "\(item.score ?? 0)"
         titleLabel.text = item.title
-        urlLabel.text = item.url
+
+        if let urlVal = item.url {
+            urlLabel.text = urlVal
+        } else {
+            urlLabel.text = ""
+        }
 
         if let time = item.time, let by = item.by {
             let date = Date(timeIntervalSince1970: TimeInterval(time))
