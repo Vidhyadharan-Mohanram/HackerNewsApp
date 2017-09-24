@@ -29,24 +29,33 @@ class HackerNewsStoryComments: NSObject {
     }
 
     private func loadCachedComments(parentId: Int) {
-        let story = try! Realm().object(ofType: StoryRealm.self, forPrimaryKey: parentId)!
-        let validCachedComments = story.kids.filter { $0.text != nil }
+        DispatchQueue.global(qos: .background).async {
+            let story = try! Realm().object(ofType: StoryRealm.self, forPrimaryKey: parentId)!
+            let validCachedComments = story.kids.filter { $0.text != nil }
 
-        DispatchQueue.main.async {
             if validCachedComments.count > 0 {
                 let commentStructs = validCachedComments.map { CommentStruct($0.toDictionary())! }
                 self.comments = Array(commentStructs)
-                self.delegate?.update(comments: self.comments)
+                
+                DispatchQueue.main.async {
+                    self.delegate?.update(comments: self.comments)
+                }
             }
 
-            let commentIds = self.comments.map { $0.id! }
+            let commentIds = Array(story.kids.map { $0.id })
 
-            self.retrieveComments(for: commentIds)
+            DispatchQueue.main.async {
+                self.retrieveComments(for: commentIds)
+            }
         }
     }
 
 
     private func retrieveComments(for ids: [Int]) {
+        guard !retrievingComments else { return }
+
+        retrievingComments = true
+
         var newCommentsDataMap = [Int: [String: Any]]()
         var newCommentsMap = [Int:CommentStruct]()
         var commentsCount = 0

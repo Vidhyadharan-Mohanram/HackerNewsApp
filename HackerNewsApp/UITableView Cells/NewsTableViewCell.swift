@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftDate
+import Hero
 
 class NewsTableViewCell: UITableViewCell {
 
@@ -31,7 +32,23 @@ class NewsTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        if selected {
+            titleLabel.heroID = "Title Label"
+            if let count = urlLabel.text?.count, count > 0 {
+                urlLabel.heroID = "URL Label"
+            }
+            timeAndPosterNameLabel.heroID = "Time And PostedBy Label"
+        } else {
+            titleLabel.heroID = ""
+            urlLabel.heroID = ""
+            timeAndPosterNameLabel.heroID = ""
+        }
+    }
+
+    override func prepareForReuse() {
+        titleLabel.heroID = ""
+        urlLabel.heroID = ""
+        timeAndPosterNameLabel.heroID = ""
     }
 
     internal func configureCell() {

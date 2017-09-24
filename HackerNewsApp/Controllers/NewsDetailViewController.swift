@@ -53,7 +53,8 @@ class NewsDetailViewController: UIViewController {
     }
 
     @IBAction private func close() {
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+//        navigationController?.popViewController(animated: true)
     }
 
     internal func updateUI() {
@@ -90,7 +91,7 @@ class NewsDetailViewController: UIViewController {
         articleButton.isSelected = false
 
         let rect = CGRect(x: 0, y: 0, width: contentScrollView.frame.width, height: contentScrollView.frame.height)
-        contentScrollView.scrollRectToVisible(rect, animated: true)
+        contentScrollView.scrollRectToVisible(rect, animated: false)
     }
 
     @IBAction fileprivate func showArticle(sender: UIButton) {
@@ -99,7 +100,7 @@ class NewsDetailViewController: UIViewController {
         commentsButton.isSelected = false
 
         let rect = CGRect(x: contentScrollView.frame.width, y: 0, width: contentScrollView.frame.width, height: contentScrollView.frame.height)
-        contentScrollView.scrollRectToVisible(rect, animated: true)
+        contentScrollView.scrollRectToVisible(rect, animated: false)
     }
 
 }

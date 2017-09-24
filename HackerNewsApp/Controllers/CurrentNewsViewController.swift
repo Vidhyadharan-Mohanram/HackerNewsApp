@@ -102,6 +102,10 @@ extension CurrentNewsViewController: UITableViewDataSource, UITableViewDelegate 
         cell.itemStruct = stories[indexPath.row]
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
 
 extension CurrentNewsViewController: FirebaseUpdaterDelegate {

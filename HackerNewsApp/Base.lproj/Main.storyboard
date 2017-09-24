@@ -111,12 +111,18 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Never" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEN-3D-OCv">
                                                 <rect key="frame" x="20" y="27.5" width="335" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="heroModifierString" value="fade"/>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.98141640419999998" green="0.39800080659999998" blue="0.0119693717" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -129,6 +135,9 @@
                                             <constraint firstItem="A0l-uK-Kqy" firstAttribute="top" secondItem="S1r-fW-j2o" secondAttribute="top" constant="4" id="xuR-wP-lEI"/>
                                             <constraint firstAttribute="bottom" secondItem="IEN-3D-OCv" secondAttribute="bottom" constant="4" id="yeS-1c-lfU"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="Navbar View"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98141640419999998" green="0.39800080659999998" blue="0.0119693717" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -240,7 +249,7 @@
                                             <outlet property="timeAndPosterNameLabel" destination="SdN-oC-19N" id="Idl-AN-HNT"/>
                                             <outlet property="titleLabel" destination="3ap-Nk-Ahm" id="YUm-l6-cGb"/>
                                             <outlet property="urlLabel" destination="eVg-fo-aWt" id="M2h-8z-rQX"/>
-                                            <segue destination="T06-AI-xS6" kind="show" id="k3b-Eu-qPI"/>
+                                            <segue destination="T06-AI-xS6" kind="presentation" id="k3b-Eu-qPI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -291,18 +300,27 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="Title Label"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjI-pj-Skp">
                                         <rect key="frame" x="20" y="112.5" width="335" height="13.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="URL Label"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5E3-Pw-voD">
                                         <rect key="frame" x="20" y="136" width="335" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="Time And PostedBy Label"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5a8-aV-cpS">
                                         <rect key="frame" x="0.0" y="170.5" width="375" height="46"/>
@@ -364,6 +382,10 @@
                                     <constraint firstItem="5E3-Pw-voD" firstAttribute="top" secondItem="DjI-pj-Skp" secondAttribute="bottom" constant="10" id="xjy-Ja-NaS"/>
                                     <constraint firstItem="huV-R5-Jke" firstAttribute="top" secondItem="30w-JL-BGH" secondAttribute="bottom" constant="15" id="ygc-NE-9AE"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="Navbar View"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9g7-Ov-qga">
                                 <rect key="frame" x="0.0" y="216.5" width="375" height="450.5"/>
@@ -465,6 +487,9 @@
                         <viewLayoutGuide key="safeArea" id="ET9-eL-phH"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="ZPq-I6-XeU"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="articleButton" destination="laG-24-ZA5" id="fKd-89-XzE"/>
                         <outlet property="articleWebView" destination="m8j-1G-Id5" id="ZBq-yW-6Ts"/>
