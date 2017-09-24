@@ -10,6 +10,8 @@
 		46009D561F76F86200BDFEB6 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46009D551F76F86200BDFEB6 /* FirebaseCore.framework */; };
 		46009D5D1F77019E00BDFEB6 /* StoryStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46009D5C1F77019E00BDFEB6 /* StoryStruct.swift */; };
 		46009D5F1F7765C600BDFEB6 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46009D5E1F7765C600BDFEB6 /* NewsTableViewCell.swift */; };
+		460A5D1B1F784BBB000E7C1C /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460A5D1A1F784BBB000E7C1C /* FirebaseMessaging.framework */; };
+		460A5D1D1F784CC9000E7C1C /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460A5D1C1F784CC9000E7C1C /* Protobuf.framework */; };
 		464DF8F11F779D6500197EF6 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F01F779D6500197EF6 /* NewsDetailViewController.swift */; };
 		464DF8F31F77B78F00197EF6 /* HackerNewsStoryComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F21F77B78E00197EF6 /* HackerNewsStoryComments.swift */; };
 		464DF8F51F77BAFB00197EF6 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F41F77BAFB00197EF6 /* CommentsTableViewCell.swift */; };
@@ -61,6 +63,8 @@
 		46009D581F77017700BDFEB6 /* StoryRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryRealm.swift; sourceTree = "<group>"; };
 		46009D5C1F77019E00BDFEB6 /* StoryStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryStruct.swift; sourceTree = "<group>"; };
 		46009D5E1F7765C600BDFEB6 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		460A5D1A1F784BBB000E7C1C /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Carthage/Build/iOS/FirebaseMessaging.framework; sourceTree = "<group>"; };
+		460A5D1C1F784CC9000E7C1C /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = Carthage/Build/iOS/Protobuf.framework; sourceTree = "<group>"; };
 		464DF8F01F779D6500197EF6 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		464DF8F21F77B78E00197EF6 /* HackerNewsStoryComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackerNewsStoryComments.swift; sourceTree = "<group>"; };
 		464DF8F41F77BAFB00197EF6 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				460A5D1D1F784CC9000E7C1C /* Protobuf.framework in Frameworks */,
+				460A5D1B1F784BBB000E7C1C /* FirebaseMessaging.framework in Frameworks */,
 				46009D561F76F86200BDFEB6 /* FirebaseCore.framework in Frameworks */,
 				46FF9A431F76EA860097CE67 /* FirebaseAuth.framework in Frameworks */,
 				95F964B6E4BA2AF76048F927 /* Pods_HackerNewsApp.framework in Frameworks */,
@@ -248,6 +254,8 @@
 		923A29E0FD4C0788689F8838 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				460A5D1C1F784CC9000E7C1C /* Protobuf.framework */,
+				460A5D1A1F784BBB000E7C1C /* FirebaseMessaging.framework */,
 				46009D551F76F86200BDFEB6 /* FirebaseCore.framework */,
 				46FF9A421F76EA860097CE67 /* FirebaseAuth.framework */,
 				4688C5D21F76D7D500FED012 /* GoogleSignIn.bundle */,
@@ -490,6 +498,8 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/FirebaseAuth.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FirebaseCore.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FirebaseMessaging.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Protobuf.framework",
 			);
 			name = Carthage;
 			outputPaths = (
