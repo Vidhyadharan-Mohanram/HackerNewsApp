@@ -17,7 +17,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet fileprivate var timeAndPosterNameLabel: UILabel!
     @IBOutlet fileprivate var commentsCountLabel: UILabel!
 
-    internal var itemStruct: ItemStruct! {
+    internal var itemStruct: StoryStruct! {
         didSet {
             configureCell()
         }

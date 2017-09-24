@@ -32,7 +32,7 @@ class NewsDetailViewController: UIViewController {
     
     @IBOutlet fileprivate var articleWebView: WKWebView!
 
-    internal var story: ItemStruct!
+    internal var story: StoryStruct!
 
     fileprivate var hackerNewsStoryComments: HackerNewsStoryComments!
 

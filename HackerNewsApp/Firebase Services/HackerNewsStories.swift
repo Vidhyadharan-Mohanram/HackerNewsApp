@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 protocol FirebaseUpdaterDelegate: class {
-    func update(newItems: [ItemStruct]?)
+    func update(newItems: [StoryStruct]?)
 }
 
 class HackerNewsStories: NSObject {
@@ -34,7 +34,7 @@ class HackerNewsStories: NSObject {
 
     private weak var delegate: FirebaseUpdaterDelegate?
 
-    private var stories: [ItemStruct]! = []
+    private var stories: [StoryStruct]! = []
     private var retrievingStories: Bool! = false
     private let ItemChildRef = "item"
 
@@ -76,7 +76,7 @@ class HackerNewsStories: NSObject {
     }
 
     private func retrieveItems(for ids: [Int]) {
-        var newStoriesMap = [Int:ItemStruct]()
+        var newStoriesMap = [Int:StoryStruct]()
         var storiesCount = 0
         for storyId in ids {
             let query = self.firebase.child(byAppendingPath: self.ItemChildRef).child(byAppendingPath: String(storyId))
@@ -89,7 +89,7 @@ class HackerNewsStories: NSObject {
                 }
 
                 if storiesCount == ids.count {
-                    var sortedStories = [ItemStruct]()
+                    var sortedStories = [StoryStruct]()
                     for storyId in ids {
                         sortedStories.append(newStoriesMap[storyId]!)
                     }
@@ -106,9 +106,9 @@ class HackerNewsStories: NSObject {
     }
 
 
-    private func extractStory(_ snapshot: FDataSnapshot) -> ItemStruct {
+    private func extractStory(_ snapshot: FDataSnapshot) -> StoryStruct {
         let data = snapshot.value as! Dictionary<String, Any>
-        let itemStory = ItemStruct(fromDictionary: data)
+        let itemStory = StoryStruct(fromDictionary: data)
 
         return itemStory
     }

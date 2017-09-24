@@ -31,7 +31,7 @@ class CurrentNewsViewController: BaseViewController {
 
     fileprivate var hackerNewsStories: HackerNewsStories!
 
-    fileprivate var stories: [ItemStruct] = []
+    fileprivate var stories: [StoryStruct] = []
 
     fileprivate var lastUpdatedTime: Date?
 
@@ -105,7 +105,7 @@ extension CurrentNewsViewController: UITableViewDataSource, UITableViewDelegate 
 }
 
 extension CurrentNewsViewController: FirebaseUpdaterDelegate {
-    func update(newItems: [ItemStruct]?) {
+    func update(newItems: [StoryStruct]?) {
         refreshControl.endRefreshing()
         lastUpdatedTime = Date()
 
