@@ -24,15 +24,9 @@ class HKNError: Error {
     }
 
     convenience init(dictionary: [String: Any]?, error: Error?) {
-        let networkStatus = WebServices.shared.reachability!.connection
-
-        if dictionary == nil && networkStatus == .none {
-            self.init(.noInternetError)
-        } else {
-            self.init(.apiError)
-            apiCallDictionary = dictionary
-            apiCallError = error
-        }
+        self.init(.apiError)
+        apiCallDictionary = dictionary
+        apiCallError = error
     }
 
 }

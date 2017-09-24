@@ -10,11 +10,11 @@ target 'HackerNewsApp' do
   pod 'Alamofire', '~> 4.5'
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift4'
   pod 'Kingfisher', :git => 'https://github.com/onevcat/Kingfisher'
-  pod 'Firebase'
-  pod 'RealmSwift'
+#  pod 'RealmSwift'
   pod 'Hero', :git => 'https://github.com/lkzhao/Hero.git'
   pod 'GoogleSignIn'
-  pod 'Firebase/Auth'
+  pod 'Firebase', '2.5.1'
+  pod 'SwiftDate', :git => 'https://github.com/malcommac/SwiftDate.git'
 
   target 'HackerNewsAppTests' do
     inherit! :search_paths
