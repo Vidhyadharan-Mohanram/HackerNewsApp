@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 protocol FirebaseUpdaterDelegate: class {
-    func update(newStories: [ItemStruct]?)
+    func update(newItems: [ItemStruct]?)
 }
 
 class HackerNewsStories: NSObject {
@@ -67,7 +67,7 @@ class HackerNewsStories: NSObject {
         query?.observeSingleEvent(of: .value, with: { snapshot in
             guard let snapshotItem = snapshot, snapshotItem.exists() else {
                 self.retrievingStories = false
-                self.delegate?.update(newStories: nil)
+                self.delegate?.update(newItems: nil)
                 return
             }
             let storyIds = snapshotItem.value as! [Int]
@@ -98,7 +98,7 @@ class HackerNewsStories: NSObject {
                     } else {
                         self.stories.insert(contentsOf: sortedStories, at: 0)
                     }
-                    self.delegate?.update(newStories: sortedStories)
+                    self.delegate?.update(newItems: sortedStories)
                     self.retrievingStories = false
                 }
             }, withCancel: self.loadingFailed)
@@ -114,7 +114,7 @@ class HackerNewsStories: NSObject {
     }
 
     func loadingFailed(_ error: Error?) -> Void {
-        self.delegate?.update(newStories: nil)
+        self.delegate?.update(newItems: nil)
         print("loading error \(String(describing: error))")
     }
 }

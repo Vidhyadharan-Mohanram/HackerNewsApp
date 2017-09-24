@@ -11,6 +11,9 @@
 		46009D5D1F77019E00BDFEB6 /* ItemStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46009D5C1F77019E00BDFEB6 /* ItemStruct.swift */; };
 		46009D5F1F7765C600BDFEB6 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46009D5E1F7765C600BDFEB6 /* NewsTableViewCell.swift */; };
 		464DF8F11F779D6500197EF6 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F01F779D6500197EF6 /* NewsDetailViewController.swift */; };
+		464DF8F31F77B78F00197EF6 /* HackerNewsStoryComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F21F77B78E00197EF6 /* HackerNewsStoryComments.swift */; };
+		464DF8F51F77BAFB00197EF6 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F41F77BAFB00197EF6 /* CommentsTableViewCell.swift */; };
+		464DF8F71F77BF6D00197EF6 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F61F77BF6D00197EF6 /* DateExtension.swift */; };
 		4688C5D31F76D7E700FED012 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4688C5D21F76D7D500FED012 /* GoogleSignIn.bundle */; };
 		4688C5D71F76D87000FED012 /* HackerNewsStories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4688C5D61F76D87000FED012 /* HackerNewsStories.swift */; };
 		469FA1A81F7683B700E5B18E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FA1A71F7683B700E5B18E /* AppDelegate.swift */; };
@@ -24,6 +27,8 @@
 		469FA1E51F76976E00E5B18E /* HKNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FA1E21F76976D00E5B18E /* HKNError.swift */; };
 		469FA1E91F76A32A00E5B18E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 469FA1E81F769C3A00E5B18E /* GoogleService-Info.plist */; };
 		469FA1EB1F76AE5F00E5B18E /* CurrentNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FA1EA1F76AE5F00E5B18E /* CurrentNewsViewController.swift */; };
+		46D760F31F77C0E300E13EC8 /* HtmlToAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D760F21F77C0E300E13EC8 /* HtmlToAttributedString.swift */; };
+		46D760F71F77C1A700E13EC8 /* CommentStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D760F51F77C1A700E13EC8 /* CommentStruct.swift */; };
 		46FF9A431F76EA860097CE67 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FF9A421F76EA860097CE67 /* FirebaseAuth.framework */; };
 		4DA0BA37CC330F877D831960 /* Pods_HackerNewsAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065FD60349B05C8B7EC28AC0 /* Pods_HackerNewsAppUITests.framework */; };
 		95F964B6E4BA2AF76048F927 /* Pods_HackerNewsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E638AB35D9B0429CABC66825 /* Pods_HackerNewsApp.framework */; };
@@ -55,6 +60,9 @@
 		46009D5C1F77019E00BDFEB6 /* ItemStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStruct.swift; sourceTree = "<group>"; };
 		46009D5E1F7765C600BDFEB6 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		464DF8F01F779D6500197EF6 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		464DF8F21F77B78E00197EF6 /* HackerNewsStoryComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackerNewsStoryComments.swift; sourceTree = "<group>"; };
+		464DF8F41F77BAFB00197EF6 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
+		464DF8F61F77BF6D00197EF6 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		4688C5D21F76D7D500FED012 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = Pods/GoogleSignIn/Resources/GoogleSignIn.bundle; sourceTree = "<group>"; };
 		4688C5D61F76D87000FED012 /* HackerNewsStories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HackerNewsStories.swift; sourceTree = "<group>"; };
 		469FA1A41F7683B700E5B18E /* HackerNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +82,9 @@
 		469FA1E21F76976D00E5B18E /* HKNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKNError.swift; sourceTree = "<group>"; };
 		469FA1E81F769C3A00E5B18E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		469FA1EA1F76AE5F00E5B18E /* CurrentNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentNewsViewController.swift; sourceTree = "<group>"; };
+		46D760F21F77C0E300E13EC8 /* HtmlToAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlToAttributedString.swift; sourceTree = "<group>"; };
+		46D760F41F77C1A600E13EC8 /* CommentRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentRealm.swift; sourceTree = "<group>"; };
+		46D760F51F77C1A700E13EC8 /* CommentStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentStruct.swift; sourceTree = "<group>"; };
 		46FF9A421F76EA860097CE67 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Carthage/Build/iOS/FirebaseAuth.framework; sourceTree = "<group>"; };
 		46FF9A441F76F3510097CE67 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		5F536D6A68B8B09D0231FDB3 /* Pods_HackerNewsAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackerNewsAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +129,8 @@
 		46009D571F77017700BDFEB6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				46D760F41F77C1A600E13EC8 /* CommentRealm.swift */,
+				46D760F51F77C1A700E13EC8 /* CommentStruct.swift */,
 				46009D5C1F77019E00BDFEB6 /* ItemStruct.swift */,
 				46009D581F77017700BDFEB6 /* RealmItem.swift */,
 			);
@@ -128,8 +141,18 @@
 			isa = PBXGroup;
 			children = (
 				46009D5E1F7765C600BDFEB6 /* NewsTableViewCell.swift */,
+				464DF8F41F77BAFB00197EF6 /* CommentsTableViewCell.swift */,
 			);
 			path = "UITableView Cells";
+			sourceTree = "<group>";
+		};
+		464DF8F81F77BF7100197EF6 /* Generic Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				46D760F21F77C0E300E13EC8 /* HtmlToAttributedString.swift */,
+				464DF8F61F77BF6D00197EF6 /* DateExtension.swift */,
+			);
+			path = "Generic Extensions";
 			sourceTree = "<group>";
 		};
 		469FA19B1F7683B700E5B18E = {
@@ -168,6 +191,7 @@
 				469FA1B51F7683B700E5B18E /* Info.plist */,
 				469FA1E81F769C3A00E5B18E /* GoogleService-Info.plist */,
 				46009D601F7765CB00BDFEB6 /* UITableView Cells */,
+				464DF8F81F77BF7100197EF6 /* Generic Extensions */,
 			);
 			path = HackerNewsApp;
 			sourceTree = "<group>";
@@ -213,6 +237,7 @@
 		469FA1E71F76977500E5B18E /* Firebase Services */ = {
 			isa = PBXGroup;
 			children = (
+				464DF8F21F77B78E00197EF6 /* HackerNewsStoryComments.swift */,
 				4688C5D61F76D87000FED012 /* HackerNewsStories.swift */,
 			);
 			path = "Firebase Services";
@@ -580,7 +605,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				469FA1E01F76970C00E5B18E /* BaseViewController.swift in Sources */,
+				46D760F71F77C1A700E13EC8 /* CommentStruct.swift in Sources */,
+				464DF8F71F77BF6D00197EF6 /* DateExtension.swift in Sources */,
 				469FA1DE1F7696FB00E5B18E /* LoginViewController.swift in Sources */,
+				46D760F31F77C0E300E13EC8 /* HtmlToAttributedString.swift in Sources */,
+				464DF8F31F77B78F00197EF6 /* HackerNewsStoryComments.swift in Sources */,
 				46009D5F1F7765C600BDFEB6 /* NewsTableViewCell.swift in Sources */,
 				469FA1E51F76976E00E5B18E /* HKNError.swift in Sources */,
 				4688C5D71F76D87000FED012 /* HackerNewsStories.swift in Sources */,
@@ -588,6 +617,7 @@
 				464DF8F11F779D6500197EF6 /* NewsDetailViewController.swift in Sources */,
 				469FA1A81F7683B700E5B18E /* AppDelegate.swift in Sources */,
 				46009D5D1F77019E00BDFEB6 /* ItemStruct.swift in Sources */,
+				464DF8F51F77BAFB00197EF6 /* CommentsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -105,13 +105,12 @@ extension CurrentNewsViewController: UITableViewDataSource, UITableViewDelegate 
 }
 
 extension CurrentNewsViewController: FirebaseUpdaterDelegate {
-    func update(newStories: [ItemStruct]?) {
-        print("newStroies: \(String(describing: newStories))")
+    func update(newItems: [ItemStruct]?) {
         refreshControl.endRefreshing()
         lastUpdatedTime = Date()
 
         updateLastUpdatedLabel()
-        guard let items = newStories else { return }
+        guard let items = newItems else { return }
 
         self.stories.insert(contentsOf: items, at: 0)
 
@@ -123,5 +122,16 @@ extension CurrentNewsViewController: FirebaseUpdaterDelegate {
         }
         tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
         tableView.endUpdates()
+    }
+}
+
+extension CurrentNewsViewController {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? NewsDetailViewController {
+            let selectedIndexPath = tableView.indexPathForSelectedRow!
+            let selectedStory = self.stories[selectedIndexPath.row]
+            controller.story = selectedStory
+        }
     }
 }
