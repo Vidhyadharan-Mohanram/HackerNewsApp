@@ -1,0 +1,74 @@
+PODS:
+  - Firebase (2.5.1)
+  - GoogleSignIn (4.0.2):
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
+    - GTMOAuth2 (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
+  - GTMOAuth2 (1.1.4):
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.1.11):
+    - GTMSessionFetcher/Full (= 1.1.11)
+  - GTMSessionFetcher/Core (1.1.11)
+  - GTMSessionFetcher/Full (1.1.11):
+    - GTMSessionFetcher/Core (= 1.1.11)
+  - Hero (1.0.0-alpha.5)
+  - Realm (2.9.1):
+    - Realm/Headers (= 2.9.1)
+  - Realm/Headers (2.9.1)
+  - RealmSwift (2.9.1):
+    - Realm (= 2.9.1)
+  - Spring (1.0.3)
+  - SwiftDate (4.4.1)
+
+DEPENDENCIES:
+  - Firebase (= 2.5.1)
+  - GoogleSignIn
+  - Hero (from `https://github.com/lkzhao/Hero.git`)
+  - RealmSwift
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift4`)
+  - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`)
+
+EXTERNAL SOURCES:
+  Hero:
+    :git: https://github.com/lkzhao/Hero.git
+  Spring:
+    :branch: swift4
+    :git: https://github.com/MengTo/Spring.git
+  SwiftDate:
+    :git: https://github.com/malcommac/SwiftDate.git
+
+CHECKOUT OPTIONS:
+  Hero:
+    :commit: 5f19087966cd315e593b2cea01fb003dfac95519
+    :git: https://github.com/lkzhao/Hero.git
+  Spring:
+    :commit: b65cb00a1adc7e810e2ad10b174b840b6d520ac3
+    :git: https://github.com/MengTo/Spring.git
+  SwiftDate:
+    :commit: e25b034ffa67e214dba0a0b774546e6b42ecfaf1
+    :git: https://github.com/malcommac/SwiftDate.git
+
+SPEC CHECKSUMS:
+  Firebase: 3565ea88b830f28f2c77ecc524622bc71a20d085
+  GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
+  GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
+  Hero: 077b71aaa08f73d6df4d74ddcdb8ea5ffe96284f
+  Realm: f91fb43bd474c4f731a116ebf7392c75dd015920
+  RealmSwift: 207f12a4a36b696c5183c60a1c06d70234a23e56
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  SwiftDate: 7cf6a818fbb381faec713088d4805ba28edea755
+
+PODFILE CHECKSUM: bab393faef564d8191a8f62df8e182c1b2df932d
+
+COCOAPODS: 1.3.1
