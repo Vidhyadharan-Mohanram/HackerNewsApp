@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDate
 
 class CurrentNewsViewController: BaseViewController {
 
@@ -32,6 +33,10 @@ class CurrentNewsViewController: BaseViewController {
 
     fileprivate var stories: [ItemStruct] = []
 
+    fileprivate var lastUpdatedTime: Date?
+
+    private var updateTimer: Timer?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,10 +47,28 @@ class CurrentNewsViewController: BaseViewController {
             tableView.addSubview(refreshControl)
         }
 
-        refreshControl.addTarget(self, action: #selector(CurrentNewsViewController.refreshNews), for: .valueChanged)
-
+        refreshControl.addTarget(self, action: #selector(CurrentNewsViewController.refreshNews),
+                                 for: .valueChanged)
         hackerNewsStories = HackerNewsStories(delegate: self)
         // Do any additional setup after loading the view.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateTimer = Timer.scheduledTimer(timeInterval: 1,
+                                           target: self,
+                                           selector: #selector(CurrentNewsViewController.updateLastUpdatedLabel),
+                                           userInfo: nil,
+                                           repeats: true)
+
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        updateTimer?.invalidate()
+        updateTimer = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,6 +80,15 @@ class CurrentNewsViewController: BaseViewController {
         hackerNewsStories.retrieveStories()
     }
 
+    @objc fileprivate func updateLastUpdatedLabel() {
+        if let date = lastUpdatedTime {
+            let dateInRegion = DateInRegion(absoluteDate: date)
+            let timeAgoText = try! dateInRegion.colloquialSinceNow().colloquial
+            lastUpdatedLabel.text = "Updated \(timeAgoText)"
+        } else {
+            lastUpdatedLabel.text = "Never"
+        }
+    }
 }
 
 extension CurrentNewsViewController: UITableViewDataSource, UITableViewDelegate {
@@ -75,7 +107,9 @@ extension CurrentNewsViewController: UITableViewDataSource, UITableViewDelegate 
 extension CurrentNewsViewController: FirebaseUpdaterDelegate {
     func update(newStories: [ItemStruct]?) {
         refreshControl.endRefreshing()
+        lastUpdatedTime = Date()
 
+        updateLastUpdatedLabel()
         guard let items = newStories else { return }
 
         self.stories.insert(contentsOf: items, at: 0)
@@ -90,4 +124,3 @@ extension CurrentNewsViewController: FirebaseUpdaterDelegate {
         tableView.endUpdates()
     }
 }
-

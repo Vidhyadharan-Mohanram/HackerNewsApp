@@ -35,7 +35,7 @@ class HackerNewsStories: NSObject {
     private weak var delegate: FirebaseUpdaterDelegate?
 
     private var stories: [ItemStruct]! = []
-    private var retrievingStories: Bool! = false
+    internal var retrievingStories: Bool! = false
     private let ItemChildRef = "item"
 
     private var queryLimit: UInt!
@@ -115,6 +115,7 @@ class HackerNewsStories: NSObject {
     }
 
     func loadingFailed(_ error: Error?) -> Void {
+        self.delegate?.update(newStories: nil)
         print("loading error \(String(describing: error))")
     }
 }
