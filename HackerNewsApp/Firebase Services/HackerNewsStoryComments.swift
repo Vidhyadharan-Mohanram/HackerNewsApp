@@ -80,7 +80,7 @@ class HackerNewsStoryComments: NSObject {
                     }
 
                     let filteredComments = sortedComments.filter({ (comment) -> Bool in
-                        return self.comments.filter { $0.id != comment.id }.last == nil
+                        return (self.comments.index(where: { $0.id == comment.id }) == nil)
                     })
 
                     self.comments = sortedComments

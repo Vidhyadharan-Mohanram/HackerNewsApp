@@ -20,7 +20,10 @@ class HackerNewsStories: NSObject {
     enum StoryType: String {
         case top = "topstories"
         case new = "newstories"
+        case best = "beststories"
+        case ask = "askstories"
         case show = "showstories"
+        case job = "jobstories"
     }
 
     enum ItemType: String {
@@ -39,13 +42,13 @@ class HackerNewsStories: NSObject {
     private var retrievingStories: Bool! = false
     private let ItemChildRef = "item"
 
-    private var queryLimit: UInt = 100
-    private var storyType: StoryType!
+    private var queryLimit: UInt = 30
 
-    convenience init(storyType type: StoryType = .top, queryLimit: UInt = 100, delegate: FirebaseUpdaterDelegate) {
+//  The StoryType can be changed here.
+    private var storyType: StoryType! = .top
+
+    convenience init(delegate: FirebaseUpdaterDelegate) {
         self.init()
-        self.storyType = type
-        self.queryLimit = queryLimit
         self.delegate = delegate
         self.loadCachedStories()
     }
@@ -66,14 +69,14 @@ class HackerNewsStories: NSObject {
         retrievingStories = true
 
         var query: FQuery? = nil
-        if let lastStory = self.stories.first {
-            let lastStoryTimeInterval = lastStory.time
-            query = firebase.child(byAppendingPath: storyType.rawValue).queryOrdered(byChild: "time")
-                .queryStarting(atValue: lastStoryTimeInterval)
-                .queryLimited(toFirst: queryLimit)
-        } else {
+//        if let lastStory = self.stories.first {
+//            let lastId = lastStory.id
+//            query = firebase.child(byAppendingPath: storyType.rawValue).queryOrdered(byChild: "id")
+//                .queryStarting(atValue: lastId)
+//                .queryLimited(toFirst: queryLimit)
+//        } else {
             query = firebase.child(byAppendingPath: storyType.rawValue).queryLimited(toFirst: queryLimit)
-        }
+//        }
 
         query?.observeSingleEvent(of: .value, with: { snapshot in
             guard let snapshotItem = snapshot, snapshotItem.exists() else {
@@ -108,12 +111,13 @@ class HackerNewsStories: NSObject {
                     var sortedStories = [StoryStruct]()
 
                     for storyId in ids {
-                        sortedStories.append(newStoriesMap[storyId]!)
+                        guard let newStory = newStoriesMap[storyId] else { continue }
+                        sortedStories.append(newStory)
                         sortedDataObjects.append(newStoriesDataMap[storyId]!)
                     }
 
                     let filteredStories = sortedStories.filter({ (story) -> Bool in
-                        return self.stories.filter { $0.id != story.id }.last == nil
+                        return (self.stories.index(where: { $0.id == story.id }) == nil)
                     })
 
                     if self.stories.count == 0 {
@@ -131,7 +135,6 @@ class HackerNewsStories: NSObject {
             }, withCancel: self.loadingFailed)
         }
     }
-
 
     private func extractStory(_ data: [String: Any]) -> StoryStruct {
         let itemStory = StoryStruct(data)
