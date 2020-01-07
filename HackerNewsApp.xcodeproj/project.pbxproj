@@ -12,6 +12,7 @@
 		46009D5F1F7765C600BDFEB6 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46009D5E1F7765C600BDFEB6 /* NewsTableViewCell.swift */; };
 		460A5D1B1F784BBB000E7C1C /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460A5D1A1F784BBB000E7C1C /* FirebaseMessaging.framework */; };
 		460A5D1D1F784CC9000E7C1C /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 460A5D1C1F784CC9000E7C1C /* Protobuf.framework */; };
+		461C07851FABFDBE0042CE55 /* SideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 461C07841FABFDBE0042CE55 /* SideMenuController.framework */; };
 		464DF8F11F779D6500197EF6 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F01F779D6500197EF6 /* NewsDetailViewController.swift */; };
 		464DF8F31F77B78F00197EF6 /* HackerNewsStoryComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F21F77B78E00197EF6 /* HackerNewsStoryComments.swift */; };
 		464DF8F51F77BAFB00197EF6 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464DF8F41F77BAFB00197EF6 /* CommentsTableViewCell.swift */; };
@@ -65,6 +66,7 @@
 		46009D5E1F7765C600BDFEB6 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		460A5D1A1F784BBB000E7C1C /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = Carthage/Build/iOS/FirebaseMessaging.framework; sourceTree = "<group>"; };
 		460A5D1C1F784CC9000E7C1C /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = Carthage/Build/iOS/Protobuf.framework; sourceTree = "<group>"; };
+		461C07841FABFDBE0042CE55 /* SideMenuController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SideMenuController.framework; path = Carthage/Build/iOS/SideMenuController.framework; sourceTree = "<group>"; };
 		464DF8F01F779D6500197EF6 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		464DF8F21F77B78E00197EF6 /* HackerNewsStoryComments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HackerNewsStoryComments.swift; sourceTree = "<group>"; };
 		464DF8F41F77BAFB00197EF6 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				461C07851FABFDBE0042CE55 /* SideMenuController.framework in Frameworks */,
 				460A5D1D1F784CC9000E7C1C /* Protobuf.framework in Frameworks */,
 				460A5D1B1F784BBB000E7C1C /* FirebaseMessaging.framework in Frameworks */,
 				46009D561F76F86200BDFEB6 /* FirebaseCore.framework in Frameworks */,
@@ -254,6 +257,7 @@
 		923A29E0FD4C0788689F8838 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				461C07841FABFDBE0042CE55 /* SideMenuController.framework */,
 				460A5D1C1F784CC9000E7C1C /* Protobuf.framework */,
 				460A5D1A1F784BBB000E7C1C /* FirebaseMessaging.framework */,
 				46009D551F76F86200BDFEB6 /* FirebaseCore.framework */,
@@ -500,6 +504,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/FirebaseCore.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FirebaseMessaging.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Protobuf.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SideMenuController",
 			);
 			name = Carthage;
 			outputPaths = (
